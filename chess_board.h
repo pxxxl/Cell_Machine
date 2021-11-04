@@ -1,5 +1,6 @@
 #pragma once
-#define LENGTH 30
+#define LENGTH 70
+#define HEIGHT 30
 
 using namespace std;
 
@@ -12,8 +13,8 @@ class chess_board
 	friend void addtion();
 	friend void initialize_array();
 private:
-	static bool board[LENGTH][LENGTH];
-	static bool board_co[LENGTH][LENGTH];
+	static bool board[HEIGHT][LENGTH];
+	static bool board_co[HEIGHT][LENGTH];
 public:
 	static void change();
 	static void live(int, int);
