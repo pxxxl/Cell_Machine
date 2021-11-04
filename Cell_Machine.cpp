@@ -1,7 +1,12 @@
-﻿// Cell_Machine.cpp : 此文件包含 "main" 函数。程序执行将在此处开始并结束。
-//控制台将占用前六行
+﻿//控制台将占用前六行
 //第七行空出
-//第八行开始生命游戏□■
+//第八行开始生命游戏    □■●○
+
+// 文件chess_board      负责所有更改细胞值的操作
+// 文件console_mani     负责操作控制台(同时向paint_addition发指令)
+// 文件paint_addition   负责绘制控制台
+// 文件paint_board      负责绘制细胞图
+// 文件paint_tools      负责掌管windows系统工具
 
 #include <iostream>
 #include <conio.h>
@@ -11,48 +16,21 @@
 #include "paint_addition.h"
 #include "paint_board.h"
 #include "paint_addition.h"
+#include "console_mani.h"
 
 using namespace std;
-
-void initialize_cells();
-void start_run();
-void initialize_array();
+void start_console();
 
 int main()
 {
-	initialize_array();
-	initialize_cells();
-	paint_addition::paint_console_menu();
-	start_run();
+	start_console();
 }
 
-void initialize_cells() {
-	cout << "请输入细胞坐标" << endl;
-	while (true) {
-		int x, y;
-		cin >> x >> y;
-		if (x <= 0 || x > LENGTH || y <= 0 || y > LENGTH) {
-			break;
-		}
-		else {
-			chess_board::live_initialize(x - 1, y - 1);
-		}
-	}
+
+void start_console() {
+	console_mani::console_main();
 }
 
-void start_run() {
-	while (1) {
-		paint_board::clearup();
-		paint_board::paint();
-		std::this_thread::sleep_for(std::chrono::seconds(1));
-		chess_board::change();
-	}
-}
-
-void initialize_array() {
-	memset(chess_board::board, 0, sizeof(chess_board::board));
-	memset(chess_board::board_co, 0, sizeof(chess_board::board_co));
-}
 
 
 

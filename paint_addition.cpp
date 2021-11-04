@@ -1,20 +1,67 @@
+
+#include <string>
+#include <vector>
 #include <iostream>
-#include "paint_addition.h"
+#include "chess_board.h"
 #include "paint_tools.h"
+#include "paint_addition.h"
 
 using namespace std;
 
-void paint_addition::paint_console_menu() {
+
+const vector<string> paint_addition::menu9 = {
+	"开始演化", "编辑细胞", "调整速度", "导入模板",
+	"", "", "", "" };
+const vector<string> paint_addition::defau0 = {
+	"        ", "        ", "        ", "        ",
+	"        ", "        ", "        ", "        " };
+const vector<string> paint_addition::formwork10 = {
+	"模板1", "模板2", "模板3", "模板4",
+	"", "", "", "" };
+
+void paint_addition::paint_console(vector<string> formwork) {
 	gotoxy(CONSOLE_START_X, CONSOLE_START_Y);
-	cout << "生命游戏  >控制台<";
-	gotoxy(CONSOLE_POSITION1_X, CONSOLE_POSITION1_Y);
-	cout << "开始运行";
-	gotoxy(CONSOLE_POSITION2_X, CONSOLE_POSITION2_Y);
-	cout << "放置细胞";	
-	gotoxy(CONSOLE_POSITION3_X, CONSOLE_POSITION3_Y);
-	cout << "速度设置";	
-	gotoxy(CONSOLE_POSITION4_X, CONSOLE_POSITION4_Y);
-	cout << "导入模板";
-	gotoxy(CONSOLE_RETURN_X, CONSOLE_RETURN_Y);
-	cout << "";
+	cout << ">生命游戏<";
+	for (int i = 1; i <= 8; i++) {
+		gotoxy(CONSOLE_POSITION_X(i), CONSOLE_POSITION_Y(i));
+		cout << formwork[i - 1];
+	}
+}
+
+void paint_addition::paint_warning(string warning) {
+	gotoxy(CONSOLE_WARNING_X, CONSOLE_WARNING_Y);
+	cout << warning;
+}
+
+void paint_addition::paint_cursor(int position) {
+	if (position <= 0 || position > 8) {
+		return;
+	}
+	else {
+		gotoxy(CONSOLE_POSITION_X(position)-2, CONSOLE_POSITION_Y(position));
+		cout << "->";
+	}
+}
+
+void paint_addition::clear_cursor(int position) {
+	if (position <= 0 || position > 8) {
+		return;
+	}
+	else {
+		gotoxy(CONSOLE_POSITION_X(position) - 2, CONSOLE_POSITION_Y(position));
+		cout << "  ";
+	}
+}
+
+void paint_addition::clear_console(int cursor_position) {
+	paint_addition::paint_console(defau0);
+	paint_addition::clear_cursor(cursor_position);
+}
+
+void paint_addition::console_downpage() {
+
+}
+
+void paint_addition::console_uppage() {
+
 }

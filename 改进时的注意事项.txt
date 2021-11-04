@@ -1,0 +1,1 @@
+1.修改控制台功能时要完全扫描console_mani和paint_addition两个类

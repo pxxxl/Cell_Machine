@@ -30,6 +30,9 @@
     <ClCompile Include="paint_tools.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="console_mani.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="chess_board.h">
@@ -44,5 +47,19 @@
     <ClInclude Include="paint_tools.h">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="console_mani.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="本程序说明文档.txt">
+      <Filter>资源文件</Filter>
+    </Text>
+    <Text Include="改进时的注意事项.txt">
+      <Filter>资源文件</Filter>
+    </Text>
+    <Text Include="痛苦之源.txt">
+      <Filter>资源文件</Filter>
+    </Text>
   </ItemGroup>
 </Project>
