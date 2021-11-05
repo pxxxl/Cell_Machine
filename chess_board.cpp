@@ -6,14 +6,12 @@
 #include <vector>
 
 bool chess_board::board[HEIGHT][LENGTH] = {0};
-vector<int> changed_cells = {};
+vector<int> chess_board::changed_cells = {};
 
 using namespace std;
 
-chess_board::chess_board(){};
-
 void chess_board::change() {
-	changed_cells.clear();
+	chess_board::changed_cells.clear();
 	int py[8][2] = { {-1,-1},{-1,0},{-1,1},{0,-1},{0,1},{1,-1},{1,0},{1,1} };
 	for (int x = 0; x != LENGTH; x++) {
 		for (int y = 0; y != HEIGHT; y++) {
@@ -29,19 +27,19 @@ void chess_board::change() {
 				}
 			}
 			if (counter == 3 && (!chess_board::cell_state(x, y))) {
-				changed_cells.push_back(y*100+x);
+				chess_board::changed_cells.push_back(y*100+x);
 			}
 			else if (counter != 2 && counter != 3 && chess_board::cell_state(x, y)) {
-				changed_cells.push_back(y*100+x);
+				chess_board::changed_cells.push_back(y*100+x);
 			}
 			else {
 				//Ï¸°û×´Ì¬²»¸Ä±ä
 			}
 		}
 	}
-	if (!(changed_cells.empty())) {
-		auto begin_1 = changed_cells.begin();
-		auto end_1 = changed_cells.end();
+	if (!(chess_board::changed_cells.empty())) {
+		auto begin_1 = chess_board::changed_cells.begin();
+		auto end_1 = chess_board::changed_cells.end();
 		while (begin_1 != end_1) {
 			int change_position[2];
 			change_position[0] = (*begin_1) % 100;
@@ -51,12 +49,6 @@ void chess_board::change() {
 		}
 	}
 	return;
-}
-void chess_board::live_initialize(int x, int y) {
-	chess_board::board[y][x] = true;
-}
-void chess_board::dead_initialize(int x, int y) {
-	chess_board::board[y][x] = false;
 }
 bool chess_board::cell_state(int x, int y) {
 	if (x < 0 || x >= LENGTH || y < 0 || y >= HEIGHT) {
@@ -82,5 +74,5 @@ int chess_board::return_LENGTH() {
 	return LENGTH;
 }
 vector<int> chess_board::return_change() {
-	return changed_cells;
+	return chess_board::changed_cells;
 }

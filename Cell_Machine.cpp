@@ -1,16 +1,16 @@
-﻿#include "chess_board.h"
+﻿#include "data.h"
+#include "chess_board.h"
 #include "paint_addition.h"
-#include "paint_board.h"
 #include "paint_addition.h"
 #include "console_mani.h"
-
-using namespace std;
+#include "paint_tools.h"
 
 int main()
 {
+	set_console();
 	console_mani::console_main();
 }
-
+//点击“本程序说明文档”有助于理解该程序
 
 
 

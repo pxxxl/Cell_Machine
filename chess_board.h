@@ -1,7 +1,7 @@
 #pragma once
 #include <vector>
 #define  LENGTH 70
-#define  HEIGHT 30
+#define  HEIGHT 40
 
 using namespace std;
 extern vector<int> changed_cells;
@@ -10,22 +10,16 @@ extern vector<int> changed_cells;
 
 class chess_board
 {
-	friend void paint();
-	friend void clearup();
-	friend void addtion();
-	friend void initialize_array();
 private:
 	static bool board[HEIGHT][LENGTH];
+	static vector<int> changed_cells;
 public:
 	static void change();
 	//vector里放的是被改变细胞的坐标
-	static void live_initialize(int, int);
-	static void dead_initialize(int, int);
 	static bool cell_state     (int, int);
 	static void change_state   (int, int);
 	static vector<int> return_change();
 	static int return_LENGTH();
 	static int return_HEIGHT();
-	chess_board();
 };
 

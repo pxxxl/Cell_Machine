@@ -1,6 +1,7 @@
 #pragma once
 #include <string>
 #include <vector>
+#include <iostream>
 
 //控制台将占用6行，第七行将开始绘制细胞盘
 
@@ -18,12 +19,6 @@ using namespace std;
 class paint_addition
 {
 public:
-	static const vector<string> menu9;
-	static const vector<string> defau0;
-	static const vector<string> formwork10;
-	static const vector<string> running11;
-	static const vector<string> speed12;
-	static const vector<string> editcell13;
 
 	static void paint_console(vector<string>);
 	static void paint_warning(string);
