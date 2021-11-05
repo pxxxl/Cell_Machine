@@ -24,6 +24,8 @@ public:
 	static bool cell_state     (int, int);
 	static void change_state   (int, int);
 	static vector<int> return_change();
+	static int return_LENGTH();
+	static int return_HEIGHT();
 	chess_board();
 };
 

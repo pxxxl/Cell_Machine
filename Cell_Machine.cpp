@@ -1,33 +1,13 @@
-﻿//控制台将占用前六行
-//第七行空出
-//第八行开始生命游戏    □■●○
-
-// 文件chess_board      负责所有更改细胞值的操作
-// 文件console_mani     负责操作控制台(同时向paint_addition发指令)
-// 文件paint_addition   负责绘制控制台
-// 文件paint_board      负责绘制细胞图
-// 文件paint_tools      负责掌管windows系统工具
-
-#include <iostream>
-#include <conio.h>
-#include <chrono>
-#include <thread>
-#include "chess_board.h"
+﻿#include "chess_board.h"
 #include "paint_addition.h"
 #include "paint_board.h"
 #include "paint_addition.h"
 #include "console_mani.h"
 
 using namespace std;
-void start_console();
 
 int main()
 {
-	start_console();
-}
-
-
-void start_console() {
 	console_mani::console_main();
 }
 

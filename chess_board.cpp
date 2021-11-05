@@ -15,13 +15,13 @@ chess_board::chess_board(){};
 void chess_board::change() {
 	changed_cells.clear();
 	int py[8][2] = { {-1,-1},{-1,0},{-1,1},{0,-1},{0,1},{1,-1},{1,0},{1,1} };
-	for (int x = 0; x != HEIGHT; x++) {
-		for (int y = 0; y != LENGTH; y++) {
+	for (int x = 0; x != LENGTH; x++) {
+		for (int y = 0; y != HEIGHT; y++) {
 			int counter = 0;
 			for (int i = 0; i < 8; i++) {
 				int xi = x + py[i][0];
 				int yi = y + py[i][1];
-				if (xi < 0 || xi >= HEIGHT || yi < 0 || yi >= LENGTH) {}
+				if (xi < 0 || xi >= LENGTH || yi < 0 || yi >= HEIGHT) {}
 				else {
 					if (chess_board::cell_state(xi, yi)) {
 						counter++;
@@ -39,45 +39,48 @@ void chess_board::change() {
 			}
 		}
 	}
-	auto begin_1 = changed_cells.begin();
-	auto end_1   = changed_cells.end();
-	while (begin_1 != end_1) {
-		int change_position[2];
-		change_position[0] = (*begin_1)%100;
-		change_position[1] = (*begin_1)/100;
-		chess_board::change_state(change_position[0], change_position[1]);
-		begin_1++;
+	if (!(changed_cells.empty())) {
+		auto begin_1 = changed_cells.begin();
+		auto end_1 = changed_cells.end();
+		while (begin_1 != end_1) {
+			int change_position[2];
+			change_position[0] = (*begin_1) % 100;
+			change_position[1] = (*begin_1) / 100;
+			chess_board::change_state(change_position[0], change_position[1]);
+			begin_1++;
+		}
 	}
 	return;
 }
-
 void chess_board::live_initialize(int x, int y) {
-	chess_board::board[x][y] = true;
+	chess_board::board[y][x] = true;
 }
-
 void chess_board::dead_initialize(int x, int y) {
-	chess_board::board[x][y] = false;
+	chess_board::board[y][x] = false;
 }
-
 bool chess_board::cell_state(int x, int y) {
-	if (x < 0 || x >= HEIGHT || y < 0 || y >= LENGTH) {
+	if (x < 0 || x >= LENGTH || y < 0 || y >= HEIGHT) {
 		cout << "错误！数组访问下标：chess_board!" << endl;
 		_getch();
 		exit(0);
 	}
-	return chess_board::board[x][y];
+	return chess_board::board[y][x];
 }
-
 void chess_board::change_state(int x, int y) {
-	if (chess_board::board[x][y]) {
-		chess_board::board[x][y] = false;
+	if (chess_board::board[y][x]) {
+		chess_board::board[y][x] = false;
 	}
 	else {
-		chess_board::board[x][y] = true;
+		chess_board::board[y][x] = true;
 	}
 	return;
 }
-
+int chess_board::return_HEIGHT() {
+	return HEIGHT;
+}
+int chess_board::return_LENGTH() {
+	return LENGTH;
+}
 vector<int> chess_board::return_change() {
 	return changed_cells;
 }

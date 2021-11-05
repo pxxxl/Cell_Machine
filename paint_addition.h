@@ -21,13 +21,15 @@ public:
 	static const vector<string> menu9;
 	static const vector<string> defau0;
 	static const vector<string> formwork10;
+	static const vector<string> running11;
+	static const vector<string> speed12;
+	static const vector<string> editcell13;
 
 	static void paint_console(vector<string>);
 	static void paint_warning(string);
 	static void paint_cursor(int);
 	static void clear_cursor(int);
-	static void clear_console(int);
+	static void clear_console();
 	static void console_uppage();
 	static void console_downpage();
 };
-
